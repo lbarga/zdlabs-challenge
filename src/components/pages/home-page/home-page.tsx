@@ -1,46 +1,56 @@
 "use client";
-
-import PokemonList from "@/components/pokemon-list/pokemon-list";
-import { GetAllPokemonsDataModel } from "@/models/get-all-pokemons-data-model";
-import { pokeService } from "@/services/poke.service";
-import { Pagination } from "@mui/material";
-import { useEffect, useState } from "react";
+import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import * as React from "react";
+import SearchPage from "../search-page/search-page";
 import { HomePageContainer } from "./home-page-styles";
+import { TabPanel } from "./tab-panel/tab-panel";
 
+function a11yProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    "aria-controls": `simple-tabpanel-${index}`,
+  };
+}
 export default function HomePage() {
-  const [pokemonsData, setPokemonsData] = useState<GetAllPokemonsDataModel>(
-    {} as GetAllPokemonsDataModel
-  );
+  const [value, setValue] = React.useState(0);
 
-  const fetch = async (offSet: number = 0) => {
-    const result = await pokeService.getAllPokemons(offSet);
-
-    setPokemonsData(result.data);
+  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
+    setValue(newValue);
   };
 
-  const handleOnChangePagination = (
-    event: React.ChangeEvent<unknown>,
-    page: number
-  ) => {
-    fetch((page - 1) * 20);
-  };
-
-  useEffect(() => {
-    fetch();
-  }, []);
-
-  const hiddeNewGenerations = 57;
-
-  const totalPages =
-    Math.ceil(
-      pokemonsData?.pokemons?.count / pokemonsData?.pokemons?.results.length
-    ) - hiddeNewGenerations || 0;
+  const tabs = [
+    {
+      label: "Search",
+      component: <SearchPage />,
+    },
+    {
+      label: "Favorites",
+      component: <h1>Favorites</h1>,
+    },
+  ];
 
   return (
     <HomePageContainer>
-      <h1>Home</h1>
-      <Pagination count={totalPages} onChange={handleOnChangePagination} />
-      <PokemonList pokemons={pokemonsData?.pokemons?.results} />
+      <Box sx={{ width: "100%" }}>
+        <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+          <Tabs value={value} onChange={handleChange} variant="fullWidth">
+            {tabs.map((tab, index) => {
+              return (
+                <Tab label={tab.label} {...a11yProps(index)} key={index} />
+              );
+            })}
+          </Tabs>
+        </Box>
+        {tabs.map((tab, index) => {
+          return (
+            <TabPanel value={value} index={index} key={index}>
+              {tab.component}
+            </TabPanel>
+          );
+        })}
+      </Box>
     </HomePageContainer>
   );
 }
