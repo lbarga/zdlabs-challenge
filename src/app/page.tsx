@@ -1,17 +1,7 @@
 "use client";
 
-import Button from "@mui/material/Button";
-import { styled } from "styled-components";
-
-const StyledButton = styled(Button)`
-  background-color: red;
-`;
+import { makeHomePage } from "./factories/pages/home-page-factory";
 
 export default function Page() {
-  return (
-    <div>
-      <h1>Home</h1>
-      <StyledButton variant="contained">Styled Button</StyledButton>
-    </div>
-  );
+  return makeHomePage();
 }
