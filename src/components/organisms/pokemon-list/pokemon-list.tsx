@@ -51,6 +51,7 @@ export default function PokemonList({
                     <PokemonListCardFavoriteButton
                       onClick={() => onClickFavorite(pokemon)}
                       style={{ color: checkIfPokemonIsFavorite(pokemon.id) }}
+                      data-testid={`favorite-button-${pokemon.id}`}
                     >
                       <FavoriteIcon style={{ color: "" }} />
                     </PokemonListCardFavoriteButton>

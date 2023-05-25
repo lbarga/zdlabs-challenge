@@ -1,12 +1,13 @@
-import { useUserContext } from "@/contexts/user-context";
+import { userContextState } from "@/contexts/user-context";
 import { PokemonModel } from "@/models/pokemon-model";
 import { PokemonServiceModel } from "@/models/pokemon-service-model";
 
-type UseFavoriteProps = {
+export type UseFavoriteProps = {
   pokemonService: PokemonServiceModel;
+  useUserContext: () => userContextState;
 };
 
-type UseFavoriteReturn = {
+export type UseFavoriteReturn = {
   isFavorite: (id: number) => boolean;
   favoritePokemon: (pokemon: PokemonModel) => Promise<void>;
   unfavoritePokemon: (pokemon: PokemonModel) => Promise<void>;
@@ -14,6 +15,7 @@ type UseFavoriteReturn = {
 
 export const useFavoriteTools = ({
   pokemonService,
+  useUserContext,
 }: UseFavoriteProps): UseFavoriteReturn => {
   const userContext = useUserContext();
 

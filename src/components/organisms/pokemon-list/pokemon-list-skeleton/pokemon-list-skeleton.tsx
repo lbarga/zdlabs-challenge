@@ -18,13 +18,13 @@ export default function PokemonListSkeleton() {
   };
 
   return (
-    <>
+    <div data-testid="loading">
       <Space height={24} />
       <SearchPageSkeletonCardsContainer>
         {makeRows().map((row, index) => {
           return <div key={index}>{row}</div>;
         })}
       </SearchPageSkeletonCardsContainer>
-    </>
+    </div>
   );
 }

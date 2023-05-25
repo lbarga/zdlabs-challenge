@@ -1,13 +1,15 @@
 "use client";
 import { useUserContext } from "@/contexts/user-context";
+import { makeFavoritesPage } from "@/factories/pages/favorites-page-factory";
+import { makeSearchPage } from "@/factories/pages/search-page-factory";
+import { useFavoriteTools } from "@/hooks/useFavoriteTools";
+import { pokeService } from "@/services/poke.service";
 import { pokemonService } from "@/services/pokemon.service";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
 import { SyntheticEvent, useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import FavoritesPage from "../favorites-page/favorites-page";
-import SearchPage from "../search-page/search-page";
 import { HomePageContainer } from "./home-page-styles";
 import { TabPanel } from "./tab-panel/tab-panel";
 
@@ -22,11 +24,20 @@ export default function HomePage() {
   const tabs = [
     {
       label: "Search",
-      component: <SearchPage />,
+      component: makeSearchPage({
+        pokeServiceParam: pokeService,
+        pokemonServiceParam: pokemonService,
+        useFavoriteToolsParam: useFavoriteTools,
+        useUserContextParam: useUserContext,
+      }),
     },
     {
       label: "Favorites",
-      component: <FavoritesPage />,
+      component: makeFavoritesPage({
+        pokemonServiceParam: pokemonService,
+        useFavoriteToolsParam: useFavoriteTools,
+        useUserContextParam: useUserContext,
+      }),
     },
   ];
 

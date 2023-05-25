@@ -1,13 +1,23 @@
 import PokemonList from "@/components/organisms/pokemon-list/pokemon-list";
-import { useUserContext } from "@/contexts/user-context";
-import { useFavoriteTools } from "@/hooks/useFavorite";
+import { userContextState } from "@/contexts/user-context";
+import { UseFavoriteProps, UseFavoriteReturn } from "@/hooks/useFavoriteTools";
 import { PokemonModel } from "@/models/pokemon-model";
-import { pokemonService } from "@/services/pokemon.service";
+import { PokemonServiceModel } from "@/models/pokemon-service-model";
 import _orderby from "lodash.orderby";
 
-const FavoritesPage = () => {
+type FavoritesPageProps = {
+  pokemonService: PokemonServiceModel;
+  useFavoriteTools: ({ pokemonService }: UseFavoriteProps) => UseFavoriteReturn;
+  useUserContext: () => userContextState;
+};
+
+const FavoritesPage = ({
+  pokemonService,
+  useFavoriteTools,
+  useUserContext,
+}: FavoritesPageProps) => {
   const userContext = useUserContext();
-  const favoriteTools = useFavoriteTools({ pokemonService });
+  const favoriteTools = useFavoriteTools({ pokemonService, useUserContext });
 
   const handleClickFavorite = async (pokemon: PokemonModel) => {
     const isFavorite = favoriteTools.isFavorite(pokemon.id);

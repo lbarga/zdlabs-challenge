@@ -1,0 +1,61 @@
+{
+  "UUID": "6196ae84-40a9-465b-8a5b-34d3c3a0b9b6",
+  "favoritedPokemons": [
+    {
+      "_id": "646eb71e9969723c28f9b845",
+      "userId": "6196ae84-40a9-465b-8a5b-34d3c3a0b9b6",
+      "id": 6,
+      "name": "charizard",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/6.png",
+      "__v": 0
+    },
+    {
+      "_id": "646eb7319969723c28f9b847",
+      "userId": "6196ae84-40a9-465b-8a5b-34d3c3a0b9b6",
+      "id": 8,
+      "name": "wartortle",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/8.png",
+      "__v": 0
+    },
+    {
+      "_id": "646ecdb62d0c3f1e17b95156",
+      "userId": "6196ae84-40a9-465b-8a5b-34d3c3a0b9b6",
+      "id": 82,
+      "name": "magneton",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/82.png",
+      "__v": 0
+    },
+    {
+      "_id": "646ed5bd2d0c3f1e17b9516f",
+      "userId": "6196ae84-40a9-465b-8a5b-34d3c3a0b9b6",
+      "id": 12,
+      "name": "butterfree",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/12.png",
+      "__v": 0
+    },
+    {
+      "_id": "646ed85c2d0c3f1e17b95178",
+      "userId": "6196ae84-40a9-465b-8a5b-34d3c3a0b9b6",
+      "id": 1,
+      "name": "bulbasaur",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png",
+      "__v": 0
+    },
+    {
+      "_id": "646ee4e52d0c3f1e17b9518d",
+      "userId": "6196ae84-40a9-465b-8a5b-34d3c3a0b9b6",
+      "id": 2,
+      "name": "ivysaur",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/2.png",
+      "__v": 0
+    },
+    {
+      "_id": "646ee5862d0c3f1e17b95193",
+      "userId": "6196ae84-40a9-465b-8a5b-34d3c3a0b9b6",
+      "id": 3,
+      "name": "venusaur",
+      "image": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/3.png",
+      "__v": 0
+    }
+  ]
+}

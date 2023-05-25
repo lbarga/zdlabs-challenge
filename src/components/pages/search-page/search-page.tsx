@@ -1,23 +1,34 @@
 "use client";
 import PokemonList from "@/components/organisms/pokemon-list/pokemon-list";
-import { useUserContext } from "@/contexts/user-context";
-import { useFavoriteTools } from "@/hooks/useFavorite";
+import { userContextState } from "@/contexts/user-context";
+import { UseFavoriteProps, UseFavoriteReturn } from "@/hooks/useFavoriteTools";
 import { GetAllPokemonsDataModel } from "@/models/get-all-pokemons-data-model";
+import { PokeServiceModel } from "@/models/poke-service-model";
 import { PokemonModel } from "@/models/pokemon-model";
-import { pokeService } from "@/services/poke.service";
-import { pokemonService } from "@/services/pokemon.service";
+import { PokemonServiceModel } from "@/models/pokemon-service-model";
 import { Pagination } from "@mui/material";
 import { useEffect, useState } from "react";
 import { SearchPageContainer } from "./search-page-styles";
 
-export default function SearchPage() {
+type SearchPageProps = {
+  pokeService: PokeServiceModel;
+  pokemonService: PokemonServiceModel;
+  useFavoriteTools: ({ pokemonService }: UseFavoriteProps) => UseFavoriteReturn;
+  useUserContext: () => userContextState;
+};
+
+export default function SearchPage({
+  pokeService,
+  pokemonService,
+  useFavoriteTools,
+  useUserContext,
+}: SearchPageProps) {
   const [pokemonsData, setPokemonsData] = useState<GetAllPokemonsDataModel>(
     {} as GetAllPokemonsDataModel
   );
   const [loading, setLoading] = useState<boolean>(true);
-  const favoriteTools = useFavoriteTools({ pokemonService });
 
-  const userContext = useUserContext();
+  const favoriteTools = useFavoriteTools({ pokemonService, useUserContext });
 
   const fetch = async (offSet: number = 0) => {
     setLoading(true);
