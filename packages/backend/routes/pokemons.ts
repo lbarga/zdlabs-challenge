@@ -16,7 +16,7 @@ pokemonsRoutes.post("/", async (req: Request, res: Response) => {
 
     res.status(201).json({ message: "Pokemon successfully inserted!" });
   } catch (error: any) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
@@ -39,7 +39,7 @@ pokemonsRoutes.delete("/:id", async (req: Request, res: Response) => {
 
     res.status(200).json({ message: "Pokemon deleted successfully!" });
   } catch (error: any) {
-    res.status(500).json({ error: error.message });
+    res.status(500).json({ message: error.message });
   }
 });
 
