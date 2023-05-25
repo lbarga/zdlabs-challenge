@@ -1,3 +1,4 @@
+import { ContextWrapper } from "@/contexts/_context";
 import StyledComponentsRegistry from "@/lib/registry";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -15,10 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className} suppressHydrationWarning={true}>
-        <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
-      </body>
-    </html>
+    <ContextWrapper>
+      <html lang="en">
+        <body className={inter.className} suppressHydrationWarning={true}>
+          <StyledComponentsRegistry>{children}</StyledComponentsRegistry>
+        </body>
+      </html>
+    </ContextWrapper>
   );
 }

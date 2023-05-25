@@ -1,6 +1,7 @@
 "use client";
 import PokemonList from "@/components/organisms/pokemon-list/pokemon-list";
 import { useUserContext } from "@/contexts/user-context";
+import { useFavoriteTools } from "@/hooks/useFavorite";
 import { GetAllPokemonsDataModel } from "@/models/get-all-pokemons-data-model";
 import { PokemonModel } from "@/models/pokemon-model";
 import { pokeService } from "@/services/poke.service";
@@ -14,6 +15,7 @@ export default function SearchPage() {
     {} as GetAllPokemonsDataModel
   );
   const [loading, setLoading] = useState<boolean>(true);
+  const favoriteTools = useFavoriteTools({ pokemonService });
 
   const userContext = useUserContext();
 
@@ -35,39 +37,15 @@ export default function SearchPage() {
   };
 
   const handleClickFavorite = async (pokemon: PokemonModel) => {
-    const favoritePokemonIds = userContext.favoritedPokemons.map(
-      (pokemon) => pokemon.id
-    );
-    const isFavorite = favoritePokemonIds.includes(pokemon.id);
+    const isFavorite = favoriteTools.isFavorite(pokemon.id);
 
     if (isFavorite) {
-      const response = await pokemonService.unfavoritePokemon(
-        pokemon.id,
-        userContext.UUID
-      );
-
-      if (response.status === 200) {
-        userContext.setFavoritedPokemons(
-          userContext.favoritedPokemons.filter(
-            (favoritedPokemon) => favoritedPokemon.id !== pokemon.id
-          )
-        );
-      }
+      favoriteTools.unfavoritePokemon(pokemon);
 
       return;
     }
 
-    const response = await pokemonService.favoritePokemon(
-      pokemon,
-      userContext.UUID
-    );
-
-    if (response.status === 201) {
-      userContext.setFavoritedPokemons([
-        ...userContext.favoritedPokemons,
-        pokemon,
-      ]);
-    }
+    favoriteTools.favoritePokemon(pokemon);
   };
 
   useEffect(() => {

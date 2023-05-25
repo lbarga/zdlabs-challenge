@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Card, CardContent, IconButton, Typography } from "@mui/material";
 import styled from "styled-components";
 
 export const PokemonListContainer = styled(Box)`
@@ -40,4 +40,9 @@ export const PokemonListCardNumber = styled(Typography)`
   font-size: 24px;
   font-weight: bold;
   color: #8b8b8b;
+`;
+
+export const PokemonListCardFavoriteButton = styled(IconButton)`
+  margin: 0px;
+  padding: 6px;
 `;
