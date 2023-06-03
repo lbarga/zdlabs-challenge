@@ -81,7 +81,6 @@ To run the application, follow the steps below:
 Please make sure you have Node.js and Yarn installed on your system before running the commands above.
 
 ## Preview:
+![Screenshot from 2023-06-03 01-10-41](https://github.com/lbarga/zdlabs-challenge/assets/17840539/c01d3eca-6633-4ae3-9a1f-3e542b617009)
 
-![Screenshot from 2023-05-25 02-57-06](https://github.com/lbarga/zdlabs-app-challenge/assets/17840539/d3d7dc57-9f60-48ef-b860-7c2d0d5098c1)
-![Screenshot from 2023-05-25 02-57-21](https://github.com/lbarga/zdlabs-app-challenge/assets/17840539/28696a4b-9a3f-4847-92ad-75e3ae1345e3)
-![Screenshot from 2023-05-25 02-57-24](https://github.com/lbarga/zdlabs-app-challenge/assets/17840539/c815f9d2-34c8-46cd-a622-d404e2c7f8b3)
+![Screenshot from 2023-06-03 01-10-35](https://github.com/lbarga/zdlabs-challenge/assets/17840539/36b83ad3-cb63-45a6-acdc-67fe18a011a5)
